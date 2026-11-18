@@ -7,10 +7,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.3.1] - 2026-11-18
 
-### Updated
+### Security
 
- - 2FA enabled for all users
+- **Two-factor authentication (2FA):** Configured the WP 2FA plugin to require two-factor authentication for all WordPress users.
+  - Enabled authenticator-app (TOTP) and email one-time-code methods, with recovery codes available during setup.
+  - Configured a **7-day grace period** for existing users to enrol, followed by mandatory setup before accessing the WordPress dashboard.
+  - Enabled setup reminders and prevented users from removing their 2FA configuration.
+  - Verified the enrolment flow using an Editor account and prepared a reusable user setup guide.
+- **User permissions:** Reduced existing administrator access to Editor where elevated privileges were not currently required, retaining the maintenance administrator account pending confirmation of any additional administrative needs.
+- **REST API user enumeration:** Added a custom MU plugin to remove public `/wp/v2/users` routes for unauthenticated requests without disabling the REST API for Gutenberg and ACF.
+  - Confirmed that `/wp-json/wp/v2/users` and `/wp-json/wp/v2/users/1` return `404 rest_no_route` when accessed publicly.
+  - Verified the alternative REST route and normal Gutenberg editing after deployment.
+  - Reviewed author enumeration; the `?author=1` request displayed a blank page, but its HTTP status was not established.
 
+### Maintenance
+
+- **Plugin dependency review:** Reviewed DearFlip Lite, Carousel Slider Block, Modal Block and CoBlocks.
+  - Retained **DearFlip Lite** because it is used in the published *The Structural Engineer – March Issue: Retaining Value* article.
+  - Retained **Carousel Slider Block** and **Modal Block** to preserve possible legacy content dependencies; no current usage was identified during the manual review.
+  - Retained **CoBlocks** because custom features in the original theme depend on it.
+  - Confirmed that Carousel Slider Block and Modal Block were on their latest available versions at the time of review.
+- **Elementor:** Deactivated and deleted the recently installed page builder, which was not part of the site's original Gutenberg/ACF architecture. Removed the unnecessary plugin to reduce maintenance and security exposure. Existing draft posts were not intentionally deleted; any Elementor-specific layouts in those drafts may no longer be editable or render correctly.
 
 ## [1.3.0] - 2026-11-18
 
