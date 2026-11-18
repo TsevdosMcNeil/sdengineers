@@ -3,7 +3,7 @@ A clean slate Wordpress theme template with Bootstrap(5), Sass, and a Webpack co
 Based in [understrap.com](https://understrap.com) and in [Codigo Theme](https://github.com/pablorica/wordpress_codigo_theme)
 
 
-[![version](https://img.shields.io/badge/version-1.3.0-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-1.3.1-green.svg)](https://semver.org)
 
 
 
@@ -20,18 +20,24 @@ Based in [understrap.com](https://understrap.com) and in [Codigo Theme](https://
  - password:   tm-studio
 
 
- ## Local Version
+ ## Local Version (Docker)
 
-[http://local.danny.sdengineers.com/](http://local.danny.sdengineers.com/)
+[https://sdengineers.localhost:8443](https://sdengineers.localhost:8443)
 
 
 ---
 
-## Hubspot
+### Docker Installation
+
+[DOCKER.md](docs/DOCKER.md)
+
+---
+
+### Hubspot
 
 We had developed a custom plugin to connect Wordpress forms to HubSpot and reveals gated content after successful submission.
 
-- [SD HubSpot](wp-content/plugins/sd-hubspot/README.md)
+- [SD HubSpot](docs/HUBSPOT_PDF_DOWNLOAD_GATE.md)
 
 ---
 

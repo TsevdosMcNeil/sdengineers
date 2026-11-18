@@ -5,12 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.1] - 2026-11-18
+
+### Updated
+
+ - 2FA enabled for all users
+
 
 ## [1.3.0] - 2026-11-18
 
 ### Updated
 
  - Docker
+
+### Fixed
+
+ - **WordPress Site Health (WP Engine staging):** Resolved a PHP fatal error on **Tools → Site Health → Info** by deactivating the **WP Engine Automated Migration** plugin (`wp-site-migrate`).
+   - The plugin registered `WPEWPAdmin::handlePluginHealthInfo` on the `debug_information` filter, but the method did not exist in the loaded `WPEWPAdmin` class.
+   - Confirmed the class was defined in `wp-content/plugins/wp-site-migrate/wp_admin.php` using a temporary diagnostic MU plugin.
+   - Verified that Site Health loads correctly after deactivation on staging.
+   - **Production:** Same deactivation planned; verification not yet recorded.
+
+### Maintenance
+
+ - Investigated WP Engine SSH access: public-key authentication succeeded, but the SSH gateway denied access to the staging installation. Inspected the remote MU plugins using SFTP and checked local WordPress hooks with WP-CLI.
+ - Retained `debug-wpe-site-health.php` in the repository for future diagnostics; remove it from the remote staging server after testing. Do not deploy this diagnostic MU plugin to production.
+ - No WordPress core or WP Engine-managed plugin files were modified.
 
 ## [1.2.0] - 2026-08-31
 

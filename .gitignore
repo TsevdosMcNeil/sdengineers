@@ -118,6 +118,7 @@ package-lock.json
 !wp-config.php.example
 #!wp-content/mu-plugins/wp-migrate-db-pro-compatibility.php
 !wp-content/mu-plugins/force-core-block-css.php
+!wp-content/mu-plugins/debug-wpe-site-health.php
 
 !wp-content/plugins/sd-hubspot
 # Ignore build folders of plugins
