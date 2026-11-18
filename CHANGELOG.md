@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - Verified the alternative REST route and normal Gutenberg editing after deployment.
   - Reviewed author enumeration; the `?author=1` request displayed a blank page, but its HTTP status was not established.
 
+### Documentation
+
+- **Security review report:** Added `SD_Engineers_WordPress_Security_Review_2026-11-18.pdf` to the repository as a record of the WordPress security audit, including user access controls, 2FA, REST API restrictions, plugin review, PHP vulnerability mitigation, hosting checks and backup verification.
+  - Documented the scope and limitations of the review, including checks that were not independently verified through WP Engine.
+
 ### Maintenance
 
 - **Plugin dependency review:** Reviewed DearFlip Lite, Carousel Slider Block, Modal Block and CoBlocks.
