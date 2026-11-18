@@ -1,0 +1,53 @@
+table.table {
+    font-family: $headings-font-family;
+    tr, td, th {
+        &:hover,&:focus {
+            box-shadow: none !important;
+            --bs-table-accent-bg: rgba(255,255,255,0) !important;
+        }
+    }
+    td, th {
+        border: none!important;
+    }
+    thead { 
+        th {
+            color: $gray-400;
+            &:first-of-type {
+                padding-left: calc(var(--bs-gutter-x) * 2);
+            }
+            &:last-of-type {
+                padding-right: calc(var(--bs-gutter-x) * 2);
+            }
+        }
+    }
+    tbody {
+        tr {
+            position: relative;
+            th:first-of-type {
+                padding-left: calc(var(--bs-gutter-x) * 2);
+            }
+            td:last-of-type {
+                padding-right: calc(var(--bs-gutter-x) * 2);
+            }
+        }
+    }
+}
+
+@each $color, $codecolor in $colors {
+    #page.#{$color} {
+        table.table-hover > tbody > tr:hover {
+            background-color: $codecolor;
+            color: $white;
+            a {
+                color: $white;
+            }
+        }
+        table.table thead > tr > th:first-of-type {
+            color: $codecolor;
+            a {
+                color: $codecolor;
+            }
+        }
+    }
+}
+

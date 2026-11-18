@@ -1,0 +1,83 @@
+
+
+/**
+ * SVG images
+ *
+ */
+/*
+Instead of
+background-image: url(../img/icon-arrow-right--white.png);
+use
+@include bg-arrow('%234A4A4A'); //%23 replaces #
+*/
+@mixin bg-arrow($iconcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve"><g><g><path fill="#{$iconcolor}" d="M21.6,28.6h-2C19.6,22.2,24.7,17,31,17v2C25.8,19,21.6,23.3,21.6,28.6z M21,19H5v-2h16V19z M25.6,17.7 c-3.7-2-6-5.9-6-10.2h2c0,3.5,1.9,6.8,5,8.4L25.6,17.7z"/><path fill="#{$iconcolor}" d="M18,36C8.1,36,0,27.9,0,18C0,8.1,8.1,0,18,0s18,8.1,18,18C36,27.9,27.9,36,18,36z M18,2C9.2,2,2,9.2,2,18 s7.2,16,16,16s16-7.2,16-16S26.8,2,18,2z"/></g></g></svg>');
+}
+
+@mixin bg-arrow-fill($iconcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve"><g><circle fill="transparent" cx="18" cy="18" r="18"/><g><path fill="#{$iconcolor}" d="M21.6,28.6h-2C19.6,22.2,24.7,17,31,17v2C25.8,19,21.6,23.3,21.6,28.6z M21,19H5v-2h16V19z M25.6,17.7 c-3.7-2-6-5.9-6-10.2h2c0,3.5,1.9,6.8,5,8.4L25.6,17.7z"/></g></g></svg>');
+}
+
+// @include bg-logo('%23FFF','#FFC200' ); //%23 replaces #
+@mixin bg-logo($logocolor, $bgcolor) {
+    background: url('data:image/svg+xml;,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 115 85.6" enable-background="new 0 0 115 85.6" xml:space="preserve"><g><g><path fill="#{$logocolor}" d="M25.2,50.4C11.3,50.4,0,39.1,0,25.2C0,11.3,11.3,0,25.2,0v15.7c-5.2,0-9.5,4.3-9.5,9.5c0,5.2,4.3,9.5,9.5,9.5V50.4z"></path><path fill="#{$logocolor}" d="M24.8,85.6c-8.1,0-16.2-3.1-22.4-9.3l11.1-11.1c3,3,7,4.7,11.3,4.7s8.3-1.7,11.3-4.7c3-3,4.7-7,4.7-11.3 c0-4.3-1.7-8.3-4.7-11.3l11.1-11.1c6,6,9.3,13.9,9.3,22.4c0,8.5-3.3,16.4-9.3,22.4C41.1,82.5,33,85.6,24.8,85.6"></path></g><path fill="#{$logocolor}" d="M72.3,85.5V69.8c14.9,0,27-12.1,27-27s-12.1-27-27-27V0C95.8,0,115,19.2,115,42.7C115,66.3,95.8,85.5,72.3,85.5"></path></g></svg>') 40px 41px/115px auto fixed no-repeat, #{$bgcolor};
+}
+
+
+// @include bg-burger('%23C4C4C4','%231D1D1B','#FFF' ); //%23 replaces #
+@mixin bg-burger($circlecolor, $linecolor, $bgcolor,$posx, $widthbutton) {
+    background-color: #{$bgcolor};
+    background-position-x: #{$posx};
+    background-position-y: 41px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: #{$widthbutton}, auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56 56" enable-background="new 0 0 56 56" xml:space="preserve"><g id="Layer_2"></g><g id="Layer_1"><circle fill="#{$circlecolor}" cx="28" cy="28" r="28"/><g><rect x="13.5" y="17" fill="#{$linecolor}" width="29" height="2"/><rect x="13.5" y="37" fill="#{$linecolor}" width="29" height="2"/><rect x="13.5" y="27" fill="#{$linecolor}" width="29" height="2"/></g></g></svg>');
+}
+
+
+@mixin bg-list($bordercolor, $iconcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35.6 35.6" enable-background="new 0 0 35.6 35.6" xml:space="preserve"><g><path fill="#{$bordercolor}" d="M17.8,35.6C8,35.6,0,27.6,0,17.8S8,0,17.8,0s17.8,8,17.8,17.8S27.6,35.6,17.8,35.6z M17.8,2C9.1,2,2,9.1,2,17.8 s7.1,15.8,15.8,15.8s15.8-7.1,15.8-15.8S26.5,2,17.8,2z"/><rect fill="#{$iconcolor}" x="8.1" y="10.4" width="4" height="2"/><rect fill="#{$iconcolor}" x="8.1" y="23.2" width="4" height="2"/><rect fill="#{$iconcolor}" x="8.1" y="16.8" width="4" height="2"/><rect fill="#{$iconcolor}" x="23.5" y="10.4" width="4" height="2"/><rect fill="#{$iconcolor}" x="23.5" y="23.2" width="4" height="2"/><rect fill="#{$iconcolor}" x="23.5" y="16.8" width="4" height="2"/><rect fill="#{$iconcolor}" x="15.8" y="10.4" width="4" height="2"/><rect fill="#{$iconcolor}" x="15.8" y="23.2" width="4" height="2"/><rect fill="#{$iconcolor}" x="15.8" y="16.8" width="4" height="2"/></g></svg>');
+}
+
+@mixin bg-grid($bordercolor, $iconcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve"><g><path fill="#{$bordercolor}" d="M18,36C8.1,36,0,27.9,0,18S8.1,0,18,0s18,8.1,18,18S27.9,36,18,36z M18,2C9.2,2,2,9.2,2,18s7.2,16,16,16s16-7.2,16-16 S26.8,2,18,2z"/><rect fill="#{$iconcolor}" x="8.3" y="10.6" width="4" height="2"/><rect fill="#{$iconcolor}" x="15.5" y="10.6" width="12.1" height="2"/><rect fill="#{$iconcolor}" x="8.3" y="23.5" width="4" height="2"/><rect fill="#{$iconcolor}" x="15.5" y="23.5" width="12.1" height="2"/><rect fill="#{$iconcolor}" x="8.3" y="17" width="4" height="2"/><rect fill="#{$iconcolor}" x="15.5" y="17" width="12.1" height="2"/></g></svg>');
+}
+
+// @include bg-search('%23000'); //%23 replaces #
+@mixin bg-search($iconcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24.5"  enable-background="new 0 0 24 24.5" xml:space="preserve"><g><g><g><path fill="#{$iconcolor}" d="M17.9,16.4l-1.6-1.2c2.5-3.2,2.2-7.9-0.7-10.8C12.8,1.5,8.3,1.2,5.1,3.7L3.9,2.1C7.8-1,13.5-0.6,17,3 C20.6,6.6,20.9,12.3,17.9,16.4z"/><path fill="#{$iconcolor}" d="M10,20.3c-2.6,0-5.1-1-7.1-3C-0.6,13.7-1,8,2.1,4l1.6,1.2C1.2,8.4,1.5,13,4.3,15.9c2.8,2.9,7.3,3.2,10.5,0.7l1.2,1.6 C14.3,19.6,12.1,20.3,10,20.3z"/></g><rect fill="#{$iconcolor}" x="19.5" y="17" transform="matrix(0.7142 -0.6999 0.6999 0.7142 -8.7952 20.3387)" width="2" height="7.9"/></g></g></svg>');
+}
+
+// @include bg-mute('%23000'); //%23 replaces #
+@mixin bg-unmuted($iconbgcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36" xml:space="preserve"><g></g><circle fill="#{$iconbgcolor}" cx="18" cy="18" r="18"/><g><rect x="23" y="12.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.6985 22.2427)" fill="%231D1D1B" width="2" height="11.7"/><rect x="18.1" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.6985 22.2427)" fill="%231D1D1B" width="11.7" height="2"/></g><g><path fill="%231D1D1B" d="M15.4,7.4h2C17.4,13.9,12.3,19,6,19v-2C11.2,17,15.4,12.8,15.4,7.4z"/><path fill="%231D1D1B" d="M11.4,18.3c3.7,2,6,5.9,6,10.2h-2c0-3.5-1.9-6.8-5-8.4L11.4,18.3z"/></g></svg>');
+}
+
+@mixin bg-muted($iconbgcolor) {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve"><circle fill="#{$iconbgcolor}" cx="18" cy="18" r="18"/><g></g><g><path fill="%231D1D1B" d="M15.4,7.4h2C17.4,13.9,12.3,19,6,19v-2C11.2,17,15.4,12.8,15.4,7.4z"/><path cfill="%231D1D1B" d="M11.4,18.3c3.7,2,6,5.9,6,10.2h-2c0-3.5-1.9-6.8-5-8.4L11.4,18.3z"/></g><g><path cfill="%231D1D1B" d="M21.5,18c0,1.5-0.5,3-1.4,4.2l1.4,1.4c1.3-1.6,2-3.6,2-5.7c0-2-0.7-4-2-5.6L20,13.8C21,15,21.5,16.5,21.5,18z" /><path fill="%231D1D1B" d="M25.5,18c0,2.7-0.9,5.2-2.5,7.2l1.4,1.4c2-2.5,3.1-5.5,3.1-8.7s-1.1-6.2-3.1-8.7l-1.4,1.4 C24.6,12.8,25.5,15.3,25.5,18z"/></g></svg>');
+}
+
+
+@mixin bg-backtoprojects($fontcolor, $bgcolor) {
+    background: url('data:image/svg+xml;utf8,<svg width="71" height="88" viewBox="0 0 71 88" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M1.62 3.82V18H7.1C9.76 18 11.48 16.34 11.48 14.04C11.48 12.28 10.36 11.02 8.98 10.68C10.16 10.28 11.04 9.1 11.04 7.64C11.04 5.44 9.48 3.82 6.72 3.82H1.62ZM4.34 9.68V6.14H6.28C7.62 6.14 8.32 6.82 8.32 7.9C8.32 8.98 7.56 9.68 6.3 9.68H4.34ZM4.34 15.7V11.96H6.62C8 11.96 8.72 12.74 8.72 13.86C8.72 15 7.92 15.7 6.58 15.7H4.34ZM12.2075 15.32C12.2075 16.86 13.4875 18.28 15.5875 18.28C17.0475 18.28 17.9875 17.6 18.4875 16.82C18.4875 17.2 18.5275 17.74 18.5875 18H21.0275C20.9675 17.66 20.9075 16.96 20.9075 16.44V11.6C20.9075 9.62 19.7475 7.86 16.6275 7.86C13.9875 7.86 12.5675 9.56 12.4075 11.1L14.7675 11.6C14.8475 10.74 15.4875 10 16.6475 10C17.7675 10 18.3075 10.58 18.3075 11.28C18.3075 11.62 18.1275 11.9 17.5675 11.98L15.1475 12.34C13.5075 12.58 12.2075 13.56 12.2075 15.32ZM16.1475 16.3C15.2875 16.3 14.8675 15.74 14.8675 15.16C14.8675 14.4 15.4075 14.02 16.0875 13.92L18.3075 13.58V14.02C18.3075 15.76 17.2675 16.3 16.1475 16.3ZM27.1697 10.32C28.4897 10.32 29.1097 11.16 29.3497 11.98L31.7297 11.18C31.3097 9.52 29.7897 7.86 27.1097 7.86C24.2497 7.86 22.0097 10.04 22.0097 13.08C22.0097 16.1 24.2897 18.3 27.1897 18.3C29.8097 18.3 31.3497 16.62 31.7897 14.98L29.4497 14.2C29.2297 14.96 28.5497 15.86 27.1897 15.86C25.8297 15.86 24.6697 14.86 24.6697 13.08C24.6697 11.3 25.8097 10.32 27.1697 10.32ZM42.4858 8.16H39.0058L35.6058 11.82V3.52H32.9458V18H35.6058V15.4L36.7058 14.24L39.3058 18H42.5658L38.5458 12.3L42.4858 8.16ZM50.7391 5.22H48.3391V6.6C48.3391 7.48 47.8591 8.16 46.8191 8.16H46.3191V10.52H48.0991V15.1C48.0991 17 49.2991 18.14 51.2191 18.14C51.9991 18.14 52.4791 18 52.7191 17.9V15.7C52.5791 15.74 52.2191 15.78 51.8991 15.78C51.1391 15.78 50.7391 15.5 50.7391 14.64V10.52H52.7191V8.16H50.7391V5.22ZM58.5009 15.88C57.2009 15.88 56.0009 14.92 56.0009 13.08C56.0009 11.22 57.2009 10.28 58.5009 10.28C59.8009 10.28 61.0009 11.22 61.0009 13.08C61.0009 14.94 59.8009 15.88 58.5009 15.88ZM58.5009 7.86C55.5609 7.86 53.3409 10.04 53.3409 13.08C53.3409 16.1 55.5609 18.3 58.5009 18.3C61.4409 18.3 63.6609 16.1 63.6609 13.08C63.6609 10.04 61.4409 7.86 58.5009 7.86ZM4.4 32.28V28.22H6.58C7.96 28.22 8.8 29 8.8 30.26C8.8 31.48 7.96 32.28 6.58 32.28H4.4ZM6.92 34.66C9.72 34.66 11.58 32.82 11.58 30.24C11.58 27.68 9.72 25.82 6.92 25.82H1.62V40H4.38V34.66H6.92ZM18.5145 30.12C18.3145 30.1 18.1145 30.08 17.8945 30.08C17.0545 30.08 15.6945 30.32 15.0945 31.62V30.16H12.5145V40H15.1745V35.5C15.1745 33.38 16.3545 32.72 17.7145 32.72C17.9545 32.72 18.2145 32.74 18.5145 32.8V30.12ZM23.908 37.88C22.608 37.88 21.408 36.92 21.408 35.08C21.408 33.22 22.608 32.28 23.908 32.28C25.208 32.28 26.408 33.22 26.408 35.08C26.408 36.94 25.208 37.88 23.908 37.88ZM23.908 29.86C20.968 29.86 18.748 32.04 18.748 35.08C18.748 38.1 20.968 40.3 23.908 40.3C26.848 40.3 29.068 38.1 29.068 35.08C29.068 32.04 26.848 29.86 23.908 29.86ZM30.3677 40.6C30.3677 41.32 30.0677 41.76 29.2677 41.76C28.8877 41.76 28.6277 41.7 28.4477 41.66V43.88C28.5877 43.94 29.1677 44.1 29.9477 44.1C31.8477 44.1 33.0277 42.76 33.0277 40.86V30.16H30.3677V40.6ZM30.0477 26.92C30.0477 27.82 30.7877 28.54 31.6877 28.54C32.6077 28.54 33.3277 27.82 33.3277 26.92C33.3277 26 32.6077 25.26 31.6877 25.26C30.7877 25.26 30.0477 26 30.0477 26.92ZM37.0155 33.96C37.0755 33.06 37.8355 32.02 39.2155 32.02C40.7355 32.02 41.3755 32.98 41.4155 33.96H37.0155ZM41.6755 36.52C41.3555 37.4 40.6755 38.02 39.4355 38.02C38.1155 38.02 37.0155 37.08 36.9555 35.78H43.9955C43.9955 35.74 44.0355 35.34 44.0355 34.96C44.0355 31.8 42.2155 29.86 39.1755 29.86C36.6555 29.86 34.3355 31.9 34.3355 35.04C34.3355 38.36 36.7155 40.3 39.4155 40.3C41.8355 40.3 43.3955 38.88 43.8955 37.18L41.6755 36.52ZM49.7502 32.32C51.0702 32.32 51.6902 33.16 51.9302 33.98L54.3102 33.18C53.8902 31.52 52.3702 29.86 49.6902 29.86C46.8302 29.86 44.5902 32.04 44.5902 35.08C44.5902 38.1 46.8702 40.3 49.7702 40.3C52.3902 40.3 53.9302 38.62 54.3702 36.98L52.0302 36.2C51.8102 36.96 51.1302 37.86 49.7702 37.86C48.4102 37.86 47.2502 36.86 47.2502 35.08C47.2502 33.3 48.3902 32.32 49.7502 32.32ZM58.8063 27.22H56.4063V28.6C56.4063 29.48 55.9263 30.16 54.8863 30.16H54.3863V32.52H56.1663V37.1C56.1663 39 57.3663 40.14 59.2863 40.14C60.0663 40.14 60.5463 40 60.7863 39.9V37.7C60.6463 37.74 60.2863 37.78 59.9663 37.78C59.2063 37.78 58.8063 37.5 58.8063 36.64V32.52H60.7863V30.16H58.8063V27.22ZM61.6206 37.26C61.7406 38.38 62.7606 40.3 65.7206 40.3C68.3006 40.3 69.5406 38.66 69.5406 37.06C69.5406 35.62 68.5606 34.44 66.6206 34.04L65.2206 33.74C64.6806 33.64 64.3206 33.34 64.3206 32.86C64.3206 32.3 64.8806 31.88 65.5806 31.88C66.7006 31.88 67.1206 32.62 67.2006 33.2L69.4206 32.7C69.3006 31.64 68.3606 29.86 65.5606 29.86C63.4406 29.86 61.8806 31.32 61.8806 33.08C61.8806 34.46 62.7406 35.6 64.6406 36.02L65.9406 36.32C66.7006 36.48 67.0006 36.84 67.0006 37.28C67.0006 37.8 66.5806 38.26 65.7006 38.26C64.5406 38.26 63.9606 37.54 63.9006 36.76L61.6206 37.26Z" fill="#{$fontcolor}"/></g><g><path d="M0.874998 70C0.874998 60.5421 8.54212 52.875 18 52.875C27.4579 52.875 35.125 60.5421 35.125 70C35.125 79.4579 27.4579 87.125 18 87.125C8.54212 87.125 0.874999 79.4579 0.874998 70Z" stroke="#{$fontcolor}" stroke-width="1.75"/><path d="M30.7174 70L15.4565 70M16.337 81.25C16.337 77.2391 14.2826 73.8152 11.25 71.7608M5.38045 70C11.4457 70 16.337 65.0108 16.337 58.75" stroke="#{$fontcolor}" stroke-width="1.75"/></g></svg>') 40px calc(100vh - 125px)/71px auto fixed no-repeat, #{$bgcolor};
+}
+
+// @include bg-download-line('%23000'); //%23 replaces #
+@mixin bg-download-line($iconbgcolor) {
+    background-image: url('data:image/svg+xml;utf8, <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve"><g><path fill="#{$iconbgcolor}"  d="M18,0C8.1,0,0,8.1,0,18c0,9.9,8.1,18,18,18c9.9,0,18-8.1,18-18C36,8.1,27.9,0,18,0z M18,34C9.2,34,2,26.8,2,18 S9.2,2,18,2s16,7.2,16,16S26.8,34,18,34z"/><path fill="#{$iconbgcolor}" d="M20.9,6.8H10.1v22.4h16.4V12.4L20.9,6.8z M20.8,9.5l3.1,3.1h-3.1V9.5z M12.1,27.2V8.8h6.7v5.8h5.8v12.7H12.1z"/></g></svg>');
+}
+
+// @include bg-download-fill('%23000'); //%23 replaces #
+@mixin bg-download-fill($bgcolor, $iconcolor) {
+    background-image: url('data:image/svg+xml;utf8, <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve"><g><path fill="#{$bgcolor}" d="M18,0C8.1,0,0,8.1,0,18c0,9.9,8.1,18,18,18c9.9,0,18-8.1,18-18C36,8.1,27.9,0,18,0z"/><path fill="#{$iconcolor}" d="M20.9,6.8H10.1v22.4h16.4V12.4L20.9,6.8z M20.8,9.5l3.1,3.1h-3.1V9.5z M12.1,27.2V8.8h6.7v5.8h5.8v12.7H12.1z"/></g></svg>');
+}
+
+
+// @include bg-close('%23000'); //%23 replaces #
+@mixin bg-close($iconcolor) {
+  background-image: url('data:image/svg+xml;utf8,<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.53125 0.530334L25.0313 25.0303" stroke="#{$iconcolor}" stroke-width="1.5"/><path d="M25.0312 0.530334L0.531248 25.0303" stroke="#{$iconcolor}" stroke-width="1.5"/></svg>');
+}

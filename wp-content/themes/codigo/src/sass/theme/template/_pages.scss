@@ -1,0 +1,93 @@
+@each $color, $codecolor in $colors {
+    #page.#{$color} {
+        --cd-page-color: $codecolor;
+        .text-color,
+        a:hover {
+            color: $codecolor;
+        }
+    }
+}
+
+header.entry-header {
+    h1 {
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 35px;
+        }
+        @include media-breakpoint-up(lg) {
+            max-width: 50vw;
+        }
+    }
+}
+
+#page {
+    &.header-white {
+        header.entry-header {
+            color:$white;
+        }
+    }
+    .entry-content{
+        & > .wp-block-group {
+            padding-top: 1.5rem;
+            padding-bottom: 0;
+            @include media-breakpoint-up(lg) {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+
+
+ul#leftMenu {
+    position: fixed;
+    top:320px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 130px;
+    z-index: 10;
+    li {
+        margin-bottom: 22px;
+        a {
+            font-family: $headings-font-family;
+            display: block;
+            opacity: 0;
+        }
+    }
+}
+
+body.page,
+body.single {
+    @each $color, $codecolor in $colors {
+        #page.#{$color} {
+            .coloured {
+                color: $codecolor;
+            }
+            @include media-breakpoint-up(lg) {
+                @include bg-logo(str-replace( #{$codecolor}, '#', '%23'),$white ); 
+                .navbar-brand {
+                    svg {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+body.single-project {
+    #single-wrapper {
+        @include bg-backtoprojects(
+            str-replace(#{$black}, '#', '%23'),
+            'transparent'
+        ); 
+        @include media-breakpoint-down(lg) {
+            background:none
+        }
+    }
+    &.hide-block-back-background,
+    &.force-hide-block-back-background {
+        #single-wrapper {
+            background:none
+        }
+    }
+}

@@ -1,0 +1,149 @@
+//Add your own editor styles here or import additional files
+
+// Grab our child theme variables
+@import "theme/child_theme_variables";
+
+// Grab a few bootstrap assets so we can use mixins, variables, etc
+@import "assets/bootstrap5/functions";
+@import "assets/bootstrap5/variables";
+@import "assets/bootstrap5/mixins";
+@import "assets/bootstrap5/reboot";
+@import "assets/bootstrap5/root";
+@import "assets/bootstrap5/tables";
+@import "assets/bootstrap5/images";
+
+// Set up basic typography
+@import "assets/bootstrap5/type";
+
+// Start bringing in colors and styles. 
+@import "assets/understrap/theme/colors";
+@import "assets/understrap/theme/blocks";
+
+@import "theme/components/buttons";   
+
+@import "theme/patterns/pattern-media";   
+@import "theme/patterns/pattern-content";   
+
+@import "theme/acf-blocks/sidebar-block";   
+
+
+// Fixes Gutenberg's cover block color picker.
+.components-circular-option-picker__option {
+	border-radius: 50%;
+}
+
+// Matches the page title font weight.
+.editor-post-title .editor-post-title__input{
+	font-size: $h1-font-size;
+	font-weight: $headings-font-weight;
+}
+
+// Block group outlined
+.wp-block-group {
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.15);
+    margin-bottom: 10px !important;
+    .wp-block-group {
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+        margin-bottom: 0 !important;
+        box-shadow: none;
+    }
+}
+.wp-block {
+    border: 1px solid transparent;
+    &:hover {
+        border: 1px solid red;
+    }
+}
+
+//block-editor-block-list__block wp-block wp-container-1 is-layout-default wp-block-group pattern-media pattern-media-width-full-window
+.wp-block-group.pattern-media-width-full-window .wp-block-group__inner-container >.wp-block-spacer {
+    height: 40px !important;
+    border:none;
+}
+
+
+//block-editor-block-list__block wp-block wp-container-4455 is-layout-default wp-block-group pattern-media pattern-media-left-width-75
+.wp-block-group.pattern-media {
+    &.pattern-media-left-width-66 figure.wp-block-image {
+        text-align: left;
+        img {
+            width: 66.66666667%;
+            margin: 0;
+        }
+    }
+    &.pattern-media-right-width-66 figure.wp-block-image {
+        text-align: right;
+        img {
+            width: 66.66666667%;
+            margin: 0 0 0 auto;
+        }
+    }
+    &.pattern-media-left-width-75 figure.wp-block-image {
+        text-align: left;
+        img {
+            width: 75%;
+            margin: 0;
+        }
+    }
+    &.pattern-media-right-width-75 figure.wp-block-image {
+        text-align: right;
+        img {
+            width: 75%;
+            margin: 0 0 0 auto;
+        }
+    }
+    &.pattern-media-centered-width-83 figure.wp-block-image {
+        text-align: center;
+        img {
+            width: 83.333%;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+.acf-block-body {
+    .acf-block-preview {
+        .sidebar-block {
+            width: var(--cd-sidebar-width);
+            position: absolute;
+            right: -20%;
+            top: 0;
+            max-width: 150px;
+            &-wrapper {
+                margin-bottom: 0;
+            }
+        }
+        .acf-block-empty {
+            min-height: 30px;
+            
+            &.sidebar-block-empty {
+                text-align: right;
+                &:after {
+                    content: 'Click here to add a left sidebar block';
+                    opacity: 0.62;
+                }
+            }
+        }
+    }
+}
+
+.wp-block-spacer.nowaypoint {
+    height:25px !important;
+    background-color: $gray-400;
+    &:before {
+        content: 'ANCHOR';
+    }
+}
+.modal {
+    display: none;
+}
+.d-editor-block {
+    display: block !important;
+}
+
+.e2pdf-download {
+    width: 30px;
+    height: 30px;
+}

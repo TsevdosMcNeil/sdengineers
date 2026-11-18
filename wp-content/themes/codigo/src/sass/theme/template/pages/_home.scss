@@ -1,0 +1,260 @@
+//Home page
+body.home {
+  --distance-top: 110px;
+  @include media-breakpoint-down(lg) {
+    header#wrapper-navbar {
+      height: 0;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    --distance-top: 40px;
+  }
+  /*
+    nav.navbar {
+        @include media-breakpoint-down(lg) {
+            background-color: transparent;
+        }
+    }
+    */
+
+  #page {
+    header.entry-header {
+      display: none;
+    }
+    .navbar-brand {
+      svg {
+        opacity: 1 !important;
+      }
+    }
+    #wrapperAnimationLogo {
+      position: fixed;
+      left: 15px;
+      top: 60px;
+      width: 57px;
+      z-index: 1000;
+      @include media-breakpoint-up(lg) {
+        left: 40px;
+        top: 100px;
+        width: 115px;
+        z-index: 1;
+      }
+    }
+    #wrapperAnimation {
+      position: relative;
+      min-height: 100vh;
+      min-height: vh(100);
+      padding-top: var(--cd-maingutter-x, 0.75rem);
+      padding-bottom: var(--cd-maingutter-x, 0.75rem);
+    }
+    #wrapperAlternative .wp-block-embed__wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    #loadingPage {
+      position: absolute;
+      z-index: 12;
+      width: 100%;
+      height: 100vh;
+      height: vh(100);
+      padding-top: var(--cd-maingutter-x, 0.75rem);
+      padding-bottom: var(--cd-maingutter-x, 0.75rem);
+      top: calc(-1 * var(--cd-maingutter-x, 0.75rem));
+      background-image: url(../img/loading.gif);
+      background-position: center;
+      background-size: 88px auto;
+      background-repeat: no-repeat;
+      &.ready {
+        animation-name: fade-out;
+        animation-duration: 0.5s;
+        z-index: -10;
+        opacity: 0;
+      }
+    }
+
+    .wrapper-lottie {
+      margin-top: calc(-1 * var(--distance-top));
+      .content-lottie.sticky-top {
+        background-color: transparent;
+        height: 1px;
+        transform-style: preserve-3d;
+        //top: 50vh;
+        //top: vh(50);
+        top: var(--distance-top);
+      }
+
+      .lenis-group {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: 100vh;
+        height: vh(100);
+        padding-top: var(--distance-top);
+        padding-bottom: calc(2 * var(--distance-top));
+        top: calc(-1 * var(--distance-top));
+        .wp-block-group__inner-container,
+        .wp-block-columns {
+          height: 100%;
+          @include media-breakpoint-down(xl) {
+            .wp-block-column:nth-child(1) {
+              display: none;
+            }
+            .wp-block-column:nth-child(3) {
+              display: none;
+            }
+          }
+        }
+        .wp-block-spacer.spacer-guide {
+          height: 1px !important;
+        }
+      }
+      .wrapper-lottie_player {
+        height: calc(var(--vh, 1vh) * 100 - 2 * var(--distance-top));
+        display: flex;
+      }
+      lottie-player {
+        will-change: transform;
+        width: 100%;
+        max-width: 2000px;
+        margin: auto;
+        height: auto;
+        position: relative;
+        @include media-breakpoint-down(lg) {
+          //transform: translateY(-50%);
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 20%;
+          background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+          z-index: 1;
+        }
+        //temporal solution to hide the error div (I couldn't find another way to hide it via CSS)
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 100%;
+          z-index: 1;
+          background: white;
+        }
+      }
+      //This is not working, see above
+      div.error,
+      #animation-container div.error,
+      lottie-player #animation-container div.error {
+        display: none !important;
+      }
+    }
+
+    #arrowHome {
+      position: absolute;
+      width: 100%;
+      z-index: 11;
+      top: calc(vh(100) - 2 * var(--distance-top));
+      text-align: center;
+      @include media-breakpoint-up(lg) {
+        top: calc(vh(100) - 3 * var(--distance-top));
+      }
+      a#arrowLink {
+        @include bg-arrow-fill("%23000");
+        transform: rotate(90deg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        animation-name: filter-vertical-shaking;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        @include media-breakpoint-down(lg) {
+          margin-left: auto;
+        }
+        &.noshake,
+        &:hover {
+          animation: none;
+        }
+      }
+    }
+    #lottieGuide {
+      background-color: transparent;
+      display: block;
+    }
+    #lottieBottom {
+      //height:50vh;
+      //height: vh(50);
+      height: 100vh;
+      height: vh(100);
+      background-color: white;
+      display: block;
+    }
+
+    #lottieGuide.wp-block-spacer,
+    #lottieBottom.wp-block-spacer {
+      @include media-breakpoint-down(lg) {
+        display: block;
+      }
+    }
+
+    #expertiseSection,
+    #practiceSection {
+      .has-large-font-size {
+        @include media-breakpoint-only(3xl) {
+          font-size: 100px !important;
+        }
+      }
+    }
+
+    .featured-projects {
+      @include media-breakpoint-down(sm) {
+        .wp-block-cb-carousel .slick-list::before {
+          padding-top: map-get($aspect-ratios, "2x3");
+        }
+      }
+    }
+    #expertiseSection {
+      .wp-block-columns.expertise-columns {
+        flex-wrap: wrap !important;
+        gap: 0 !important;
+
+        @media (min-width: 1720px) and (max-width: 1920px) {
+          flex-wrap: nowrap !important;
+          gap: calc(2 * var(--bs-gutter-x)) !important;
+        }
+        @media (min-width: 1921px) and (max-width: 2120px)  {
+          flex-wrap: wrap !important;
+          gap: 0 !important;
+
+        }
+        @media (min-width: 2121px) {
+          flex-wrap: nowrap !important;
+          gap: calc(2 * var(--bs-gutter-x)) !important;
+        }
+
+        & > .wp-block-column {
+          /* Smaller than 1720px: full width */
+          flex: 0 0 100%;
+          /*  2 columns */
+          @media (min-width: 1720px) and (max-width: 1920px) {
+            flex: 1 1 0;
+          }
+          /* 1 full width column */
+          @media (min-width: 1921px) and (max-width: 2120px)  {
+            flex: 0 0 100%;
+          }
+          /*  2 columns */
+          @media (min-width: 2121px) {
+            flex: 1 1 0;
+          }
+        }
+      }
+    }
+
+  }
+}

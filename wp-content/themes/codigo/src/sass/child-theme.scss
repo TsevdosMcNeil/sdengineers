@@ -1,0 +1,54 @@
+// Fonts //
+@import "theme/child_fonts"; 
+@import "theme/child_theme_variables";
+
+@import "assets/bootstrap5/bootstrap";                             // <------- Loads Bootstrap4
+@import "assets/understrap/theme/understrap";  // <------- Loads the Understrap defaults. Just a few classes to incorporate BS in WP
+@import "assets/understrap/theme/woocommerce"; // <------- Loads WooCommerce style fixes. Comment out if you aren't using WooCommerce
+
+// Optional files - If you don´t use the corresponding scripts/fonts comment em out
+@import "assets/fontawesome/font-awesome";                           // <------- Font Awesome Icon font
+@import "assets/underscores";                            // <------- Underscores media styles
+
+// Any additional imported files //
+
+@import "assets/understrap/theme/colors";           // <-------- This creates the necessary bootstrap color classes.
+@import "assets/understrap/theme/blocks";           // <-------- This adds Bootstrap styles to blocks.
+@import "assets/understrap/theme/contact-form7";    // <-------- Contact Form 7 - Bootstrap 4 support
+
+
+@import "theme/child_theme";                             // <------- Add your styles into this file
+@import "theme/child_bootstrap";   
+@import "theme/child_gutenberg";   
+
+@import "theme/components/buttons";
+@import "theme/components/alerts";
+@import "theme/components/cards";
+@import "theme/components/forms";
+@import "theme/components/tables";
+@import "theme/components/accordion";
+@import "theme/components/carousel";
+@import "theme/components/modal";
+
+@import "theme/template/header";
+@import "theme/template/footer";
+@import "theme/template/posts";
+@import "theme/template/projects";
+@import "theme/template/people";
+@import "theme/template/careers";
+@import "theme/template/pages";
+@import "theme/template/splash";
+@import "theme/template/waypoint";
+@import "theme/template/search";
+
+@import "theme/patterns/pattern-media";   
+@import "theme/patterns/pattern-content";   
+@import "theme/patterns/pattern-mosaic";  
+@import "theme/patterns/pattern-featured";  
+
+@import "theme/acf-blocks/sidebar-block";   
+
+@import "theme/template/pages/home";
+@import "theme/template/pages/practice";
+@import "theme/template/pages/expertise";
+@import "theme/template/pages/404";

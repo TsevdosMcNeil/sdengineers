@@ -1,0 +1,167 @@
+
+.sidebar-block {
+  @include media-breakpoint-down(lg) {
+    // render but keep it out of view
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    bottom: 0;
+    z-index: 1000;
+    transform: translateY(100%);
+    pointer-events: none;
+
+    display: flex;
+    background-color: var(--mobile-bg-color);
+
+    // animation
+    transition: transform .7s ease;
+    will-change: transform;
+
+
+
+    figure {
+      height: 100px;
+      width: auto;
+      aspect-ratio: 3/2;
+      margin-bottom: 0 !important;
+    }
+    .sidebar-block_title {
+      margin: auto;
+      color: var(--mobile-text-color);
+      padding: 0 10px 0 20px;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* limit to 4 lines */
+      -webkit-box-orient: vertical;
+      line-clamp: 4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sidebar-block_link {
+      margin: auto 30px auto auto;
+      min-width: 30px;
+      min-height: 30px;
+
+      &.fill-black:before{
+         @include bg-arrow('%23000');
+      }
+      &.fill-white:before{
+        @include bg-arrow('%23FFF');
+     }
+    }
+
+    .sidebar-block_image-placeholder {
+      width: 150px;
+    }
+
+    &.mobile_fixed {
+      transform: translateY(0);
+      pointer-events: auto;
+      // iOS safe-area padding so it doesn’t sit under the home bar
+      padding-bottom: max(env(safe-area-inset-bottom), 0);
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    top: 0;
+    width: calc(var(--cd-sidebar-width) - 25px);
+    right: calc(-1 * var(--cd-sidebar-width) - 25px);
+  }
+  &:hover {
+    .btn-primary {
+      @extend .btn-primary-hover;
+    }
+    .btn-back {
+      transform: rotate(-180deg) !important;
+    }
+  }
+  &-back {
+    .sidebar-block_title {
+      font-family: $headings-font-family;
+      letter-spacing: -0.7px;
+      margin-bottom: 6px;
+      margin-top: 0.5px;
+    }
+  }
+
+  &-left {
+    @include media-breakpoint-up(lg) {
+      width: auto;
+      left: calc(-1 * var(--cd-sidebar-width) + 15px);
+      right: auto;
+    }
+    &.sidebar-block-back {
+      //top: calc(100vh - 40px - 125px); //.sidebar-block-wrapper top: 40px;
+      top: calc(100vh - 140px - 125px); //.sidebar-block-wrapper top: 140px;
+    }
+  }
+
+  &-wrapper {
+    //position: relative;
+    @include media-breakpoint-down(lg) {
+      //display: none; //Temporary
+    }
+    @include media-breakpoint-up(lg) {
+      position: sticky;
+      //top: 40px;
+      top: 140px;
+      z-index: 3;
+
+      //To aoid overlaping with other sidebar blocks
+
+      margin-bottom: 120px;
+      & + * {
+        margin-top: -120px !important;
+      }
+      &.large {
+        margin-bottom: 260px;
+        & + * {
+          margin-top: -260px !important;
+        }
+      }
+    }
+    &-back {
+      //position: relative;
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
+      @include media-breakpoint-up(lg) {
+        margin-bottom: 550px;
+        & + * {
+          margin-top: -550px !important;
+        }
+      }
+    }
+    //Firexox
+    @-moz-document url-prefix() {
+      &-back {
+        @include media-breakpoint-up(lg) {
+          margin-bottom: 395px;
+          & + * {
+            margin-top: -395px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Weird behavior due the Lenis animation. We can fix it making the width 99% on mobile
+body.home {
+  .sidebar-block {
+    @include media-breakpoint-down(lg) {
+      width: 98dvw;
+    }
+  }
+}
+body.single-project {
+  .sidebar-block-back {
+    opacity: 0;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &.force-hide-block-back-background .sidebar-block-back {
+    opacity: 1;
+  }
+}

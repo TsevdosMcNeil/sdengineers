@@ -1,0 +1,282 @@
+$count: 0;
+@each $grid-breakpoint, $i in $grid-breakpoints {
+    $count: $count + 1;
+    @media screen and (min-width: $i) {
+
+        body,
+        a[class^='wp-block-button'],
+        .button,
+        .submit,
+        .wp-block-button__link, h6 {
+            font-size: map-get($font-size-body, $grid-breakpoint);
+            line-height: 1.1;
+            letter-spacing: $letter-spacing;
+        }
+        h1, .h1 {
+            font-size: map-get($font-size-h1, $grid-breakpoint);
+            //line-height: 0.95;
+            //line-height: 1.1;
+            line-height: 1.034;
+            transform: translateY(-15px);
+            letter-spacing: $letter-spacing-big;
+        }
+        .h1 {
+            font-size: map-get($font-size-h1, $grid-breakpoint) !important;
+        }
+        @if($count > 2) {
+            .md-h1 {
+                font-size: map-get($font-size-h1, $grid-breakpoint) !important;
+                //line-height: 0.95;
+                line-height: 1.1;
+                transform: translateY(-15px);
+                letter-spacing: $letter-spacing-big;
+            }
+        }
+        @-moz-document url-prefix() {
+            h1, .h1 {
+                transform: translateY(-8px);
+            }
+            @if($count > 2) {
+                .md-h1 {
+                    transform: translateY(-8px);
+                }
+            }
+        }
+
+        h2 {
+            font-size: map-get($font-size-h2, $grid-breakpoint);
+            letter-spacing: $letter-spacing-big;
+            line-height: 1.1;
+            @if($count > 2) {
+                //line-height: 0.95;
+                line-height: 1.1;
+            }
+        }
+        .h2 {
+            font-size: map-get($font-size-h2, $grid-breakpoint) !important;
+        }
+        @if($count > 2) {
+            .md-h2{
+                font-size: map-get($font-size-h2, $grid-breakpoint) !important;
+                //line-height: 0.95;
+                line-height: 1.1;
+                letter-spacing: $letter-spacing-big;
+            }
+        }
+
+        h3, h4 {
+            font-size: map-get($font-size-h3, $grid-breakpoint);
+            letter-spacing: $letter-spacing-big;
+            line-height: 1.1;
+            @if($count > 2) {
+                //line-height: 0.95;
+                line-height: 1.1;
+                margin-top: -0.1em;
+            }
+        }
+        .h3 {
+            font-size: map-get($font-size-h3, $grid-breakpoint) !important;
+        }
+        @if($count > 2) {
+            .md-h3{
+                font-size: map-get($font-size-h3, $grid-breakpoint) !important;
+                //line-height: 0.95;
+                line-height: 1.1;
+                letter-spacing: $letter-spacing-big;
+            }
+        }
+
+        h5 , .body-font {
+            font-size: map-get($font-size-h5, $grid-breakpoint);
+            letter-spacing: $letter-spacing-big;
+            line-height: 1.1;
+            @if($count > 2) {
+                //line-height: 0.95;
+                line-height: 1.1;
+            }
+        }
+
+        .entry-header .posted-on {
+            font-size: map-get($font-size-subheader, $grid-breakpoint);
+            letter-spacing: $letter-spacing-big;
+        }
+
+        .small,
+        .tooltip {
+            font-size : map-get($font-size-small, $grid-breakpoint) !important;
+            letter-spacing: $letter-spacing;
+        }
+    }
+}
+
+* {
+    font-weight: 100;
+    line-height: 1.1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+
+    -webkit-scroll-behavior: auto !important;
+    scroll-behavior: auto !important;
+
+    /* No wraping on words*/
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+*:hover, *:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+html, body {
+    background-color: $white;
+    overscroll-behavior-y: none;
+    letter-spacing: $letter-spacing;
+}
+body:not(.home) {
+  overflow-x: hidden;
+}
+b, strong {
+    font-family: $headings-font-family;
+    font-weight: normal;
+}
+
+p {
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+    &.has-background {
+        padding: 0 !important;
+    }
+}
+
+
+figcaption {
+    @extend .small;
+    font-style: normal;
+    color: $black !important;
+    margin-top:5px !important;
+    margin-bottom:0 !important;
+}
+
+blockquote {
+    @extend h3;
+    cite {
+        @extend .small;
+        font-style: normal;
+        color: $gray-400;
+        margin-top:15px;
+        margin-bottom:0;
+        img {
+           width: 56px !important;
+           height: auto;
+           border-radius: 50%;
+           margin-right: 10px;
+        }
+        &::before {
+            content: '';
+        }
+    }
+    p:first-of-type {
+        margin-top: -0.2em; //Vertical align to top
+        &:before {
+            color: inherit;
+            content: open-quote;
+            vertical-align: top;
+            //margin-left: -0.4em;
+            //margin-right: 0.1em;
+        }
+    }
+    p:last-of-type:after {
+        color: inherit;
+        content: close-quote;
+        vertical-align: bottom;
+        //margin-left: 0.1em;
+    }
+}
+
+
+#page {
+    margin-top: 30px;
+    padding-right: calc(var(--cd-maingutter-x, 0.75rem) - var(--bs-gutter-x, 1.5rem));
+    padding-left: calc(var(--cd-maingutter-x, 0.75rem) - var(--bs-gutter-x, 1.5rem));
+    min-height: fill-available;
+
+    @include media-breakpoint-up(lg) {
+        padding-right: 0;
+        padding-left: 0;
+        margin-top: var(--cd-maingutter-x, 0.75rem);
+    }
+}
+body:not(.home) {
+    #page {
+        @include media-breakpoint-down(lg) {
+            overflow-x: hidden;
+        }
+    }
+}
+
+.content-primary {
+    //border-left: 2px solid $black;
+    //border-right: 2px solid $black;
+    position: relative;
+    @include media-breakpoint-up(lg) {
+        padding-right: calc(var(--bs-gutter-x) * 2) !important;
+        padding-left: calc(var(--bs-gutter-x) * 2) !important;
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top:0;
+            z-index: 2;
+            border-left: 2px solid $black;
+            left:-1px;
+        }
+        &::after {
+            left:calc(100% - 1px);
+        }
+    }
+
+}
+
+
+.sidebar-left {
+    @include media-breakpoint-up(lg) {
+        width: var(--cd-sidebar-width);
+        padding: 0 !important;
+    }
+}
+.sidebar-right {
+    @include media-breakpoint-down(lg) {
+        width: 0;
+        padding: 0 !important;
+    }
+    @include media-breakpoint-up(lg) {
+        width: var(--cd-sidebar-width);
+        padding: 0 !important;
+    }
+}
+
+
+#left-sidebar,
+#right-sidebar {
+    h1,h2,h3,h4,h5,h6, blockquote {
+        @extend .body-font;
+    }
+}
+
+.wrapper {
+    padding: 0;
+}
+
+.mobileOverlinedTitle {
+    @include media-breakpoint-down(lg) {
+        padding-top: 5px;
+        padding-right: calc(2* var(--bs-gutter-x, 0.75rem));
+        padding-left: calc(2 * var(--bs-gutter-x, 0.75rem));
+        margin-right: calc(-2* var(--bs-gutter-x, 0.75rem));
+        margin-left: calc(-2 * var(--bs-gutter-x, 0.75rem));
+        border-top:1px solid $black;
+    }
+}

@@ -1,0 +1,146 @@
+:root {
+  --cd-maingutter-x: 15px;
+  --bs-gutter-x: 7.5px;
+  --bs-gutter-y: 0;
+  --cd-sidebar-width: 40px;
+
+  --cd-btn-small: 25px;
+  --cd-btn-large: 35px;
+  //--cd-btn-large-xpos: calc(100vw - 30px);
+  --cd-btn-large-xpos: calc(var(--vw, 1vw) * 100 - 30px - var(--scrollbar-width, 0));
+  @include media-breakpoint-up(lg) {
+    --cd-maingutter-x: 40px;
+    --bs-gutter-x: 12.5px;
+    //--cd-sidebar-width: calc(210px - var(--cd-maingutter-x));
+    --cd-sidebar-width: 210px;
+
+    --cd-btn-small: 30px;
+    --cd-btn-large: 40px;
+    //--cd-btn-large-xpos: calc(100vw - 115px);
+    --cd-btn-large-xpos: calc(var(--vw, 1vw) * 100 - 123px - var(--scrollbar-width, 0));
+  }
+  @include media-breakpoint-up(xxl) {
+    --cd-btn-large: 56px;
+    //--cd-btn-large-xpos: calc(100vw - 130px);
+    --cd-btn-large-xpos: calc(var(--vw, 1vw) * 100 - 130px - var(--scrollbar-width, 0));
+  }
+  @include media-breakpoint-up(4xl) {
+    --cd-btn-small: 38px;
+  }
+
+  //Current width of boostrap column inside the container
+  --cd-bs-column-with: calc(0.083333 * (100vw - 2 * (var(--cd-sidebar-width) + var(--cd-maingutter-x))));
+}
+
+.row {
+  --bs-gutter-x: 7.5px; //overwrites _grid.scss
+  @include media-breakpoint-up(lg) {
+    --bs-gutter-x: 12.5px;
+  }
+  margin-right: calc(var(--bs-gutter-x) * -1);
+  margin-left: calc(var(--bs-gutter-x) * -1);
+}
+.row > * {
+  padding-right: calc(var(--bs-gutter-x) * 1);
+  padding-left: calc(var(--bs-gutter-x) * 1);
+}
+
+/*
+* Break container
+*/
+.break-container {
+  @include _break-container;
+}
+.break-mobile-container {
+  @include media-breakpoint-down(lg) {
+    @include _break-container;
+  }
+}
+.break-md-container {
+  @include media-breakpoint-up(lg) {
+    @include _break-container;
+  }
+}
+
+/*
+* Ratios
+*/
+@each $grid-breakpoint, $width in $grid-breakpoints {
+  @media screen and (min-width: $width) {
+    @each $key, $ratio in $aspect-ratios {
+      .ratio-#{$grid-breakpoint}-#{$key} {
+        --#{$variable-prefix}aspect-ratio: #{$ratio};
+      }
+    }
+  }
+}
+.ratio,
+.wp-block-image.ratio {
+  img {
+    height: 100% !important;
+    object-fit: cover;
+  }
+}
+
+/*
+* Sticky
+*/
+.sticky-top {
+  z-index: 100;
+}
+
+/*
+* Sizes
+*/
+@each $grid-breakpoint, $width in $grid-breakpoints {
+  @media screen and (min-width: $width) {
+    .min-vh-#{$grid-breakpoint}-100 {
+      min-height: 100vh !important;
+    }
+    .min-vw-#{$grid-breakpoint}-100 {
+      min-width: 100vh !important;
+    }
+  }
+}
+
+.md-hidden {
+  @include media-breakpoint-up(md) {
+    display: none !important;
+  }
+}
+
+.py-4 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+.py-8 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap !important;
+}
+
+
+.wp-block-columns.w-3xl-full {
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+}
+@media (min-width: 1720px) {
+  .wp-block-columns.w-3xl-full {
+    flex-wrap: nowrap !important;
+    gap: calc(2 * var(--bs-gutter-x)) !important;
+  }
+}
+/* Smaller than 1720px = full width */
+.wp-block-columns.w-3xl-full > .wp-block-column {
+  flex: 0 0 100%;
+}
+
+/* 1720px and up = equal columns */
+@media (min-width: 1720px) {
+  .wp-block-columns.w-3xl-full > .wp-block-column {
+    flex: 1 1 0;
+  }
+}

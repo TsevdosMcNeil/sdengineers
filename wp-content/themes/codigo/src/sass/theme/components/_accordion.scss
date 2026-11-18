@@ -1,0 +1,182 @@
+.accordion {
+    &-item {
+        background-color: transparent;
+        border: none;
+    }
+    &-reset {
+        width: auto;
+        padding-right: calc(var(--bs-gutter-x) * 1);
+        padding-left: calc(var(--bs-gutter-x) * 1);     
+        cursor: pointer;
+        opacity: 0;
+        @include media-breakpoint-up(lg) {
+            width: var(--cd-bs-column-with);
+            //width: 8.33333333vw;
+        }
+    }
+    &-button {
+        padding: 0;
+        font-size: inherit;
+        border: none;
+        display: inline-flex;
+        width: auto;
+        &::after {
+            @extend .svg-background;
+            top: auto;
+            left: calc(100% + 5px);
+            width: var(--cd-btn-small);
+            height: var(--cd-btn-small);
+            background-size: cover;
+            transform: rotate(90deg);
+            bottom:4px;
+            @include media-breakpoint-up(lg) {
+                bottom:7px;
+            }
+            @include media-breakpoint-up(4xl) {
+                bottom:10px;
+            }
+        }
+        &:focus {
+            z-index: 3;
+            border: none;
+            outline: 0;
+            box-shadow: none;
+        }
+        &:not(.collapsed) {
+            color: $black;
+            background-color: transparent;
+            box-shadow: none;
+            &::after {
+                @include bg-arrow('%23000');
+                //@include bg-arrow-fill('%23000');
+                transform: rotate(-90deg);
+            }
+            & + .accordion-reset {
+                opacity: 1;
+            }
+        }
+        
+    }
+    
+    &-body {
+        padding: 0;
+        & > *  {
+            cursor: pointer;
+        }
+    }
+    &-filter {
+        .accordion-header {
+            margin-top: -2px;
+            @include media-breakpoint-down(lg) {
+                button.accordion-button {
+                    font-size: 35px;
+                }
+            }
+        }
+        h6 {
+            @include media-breakpoint-down(lg) {
+                margin-top:5px;
+                padding-top:5px;
+                padding-right: calc(2* var(--bs-gutter-x, 0.75rem));
+                padding-left: calc(2 * var(--bs-gutter-x, 0.75rem));
+                margin-right: calc(-2* var(--bs-gutter-x, 0.75rem));
+                margin-left: calc(-2 * var(--bs-gutter-x, 0.75rem));
+                border-top:1px solid $black;
+                font-size: 35px;
+            }
+        }
+        .accordion-body {
+            a {
+                @include media-breakpoint-down(lg) {
+                    color: $gray-400;
+                }
+            }
+        }
+    }
+}
+
+@each $color, $codecolor in $colors {
+    #page.#{$color} {
+        .accordion-button{
+            &:hover,
+            &:not(.collapsed) {
+                color: $codecolor;
+                &::after {
+                    //@include bg-arrow('%23FFF');
+                    @include bg-arrow-fill('%23FFF');
+                    background-color: $codecolor;
+                }
+            }
+        }
+        .accordion-body {
+            a.active {
+                color: $codecolor;
+            }
+            /*
+            & > *:hover  {
+                a {
+                    color: $codecolor;
+                }
+            }
+            */
+        }
+
+        .accordion-filter {
+            .accordion-button{
+                &.collapsed {
+                    animation-name: filter-change-color-#{$color};
+                    animation-duration: 5s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: linear;
+                    animation-delay: 0s;
+                    &::after {
+                        animation-name: filter-horizontal-shaking, filter-change-bgcolor-#{$color};
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: linear;
+                        animation-delay: 0s;
+                    }
+                    &:hover {
+                        color: $codecolor;
+                        animation: none;
+                        &::after {
+                            @include bg-arrow-fill('%23FFF');
+                            background-color: $codecolor;
+                            animation: none;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    @keyframes filter-change-color-#{$color} {
+        0% { color: inherit }
+        84% { color: inherit}
+        85% { color: $codecolor;}
+        99% { color: $codecolor;}
+        100% { color: inherit  }
+    }
+    @keyframes filter-change-bgcolor-#{$color} {
+        0% { 
+            @include bg-arrow('%23000'); 
+            background-color: transparent;
+        }
+        84% { 
+            @include bg-arrow('%23000');
+            background-color: transparent;
+        }
+        85% { 
+            @include bg-arrow-fill('%23FFF');
+            background-color: $codecolor;
+        }
+        99% { 
+            @include bg-arrow-fill('%23FFF');
+            background-color: $codecolor;
+        }
+        100% { 
+            @include bg-arrow('%23000'); 
+            background-color: transparent;
+        }
+    }
+}

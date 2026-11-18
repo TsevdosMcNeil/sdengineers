@@ -1,0 +1,60 @@
+.alert {
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 15px;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 25px;
+    background-color: $white;
+    height: var(--cd-btn-large);
+    font-weight: bold;
+    span.hide {
+        font-weight: bold;
+        display: inline;
+        max-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: max-width .5s cubic-bezier(.785,.135,.15,.86);
+    }
+    &:hover {
+        span.hide {
+            width: auto;
+            max-width: 50vw;
+        }
+    }
+    &-primary {
+        color: $primary;
+        &:hover {
+            color: $primary;
+        }
+    }
+    &-secondary {
+        color: $secondary;
+        &:hover {
+            color: $secondary;
+        }
+    }
+}
+
+@each $color, $codecolor in $colors {
+    .navigation-wrapper.bg-#{$color} {
+        .alert-primary, 
+        .alert-secondary {        
+            color: $codecolor;
+            transition: color  1s ease-in-out;
+            &:hover {
+                color: $codecolor;
+            }
+        }
+    }
+}
+.navigation-wrapper.bg-gray {
+    .alert-primary, 
+    .alert-secondary {        
+        color: $gray-700;
+        &:hover {
+            color: $gray-700;
+        }
+    }
+}

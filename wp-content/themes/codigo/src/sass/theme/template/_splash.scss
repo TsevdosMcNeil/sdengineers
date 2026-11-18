@@ -1,0 +1,18 @@
+.splash-page {
+    @include _full_width;
+    @include _full_height;
+    position: fixed;
+    z-index: 10000 !important;
+    top:0;
+    left: 0;
+    overflow: hidden;
+    &.hide {
+        z-index: -10000 !important;
+        display: none;
+    }
+    &.fadeOut {
+        animation-duration: 1.1s;
+        animation-fill-mode: forwards;
+        animation-name: fade-out;
+    }
+}

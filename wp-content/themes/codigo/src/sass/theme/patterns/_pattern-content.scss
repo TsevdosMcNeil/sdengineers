@@ -1,0 +1,19 @@
+.pattern-content {
+    .wp-block-columns {
+        margin-bottom: 0 !important;
+        @include media-breakpoint-down(xl) {
+            padding-bottom: calc(2 * var(--bs-gutter-x));
+        }
+    }
+}
+
+//pattern-content-25-25-25-25
+//pattern-content-50-25-25
+//pattern-content-50-50
+//pattern-content-25-75
+//pattern-content-33-66
+//pattern-content-66-33
+//pattern-content-75-25
+//pattern-content-100
+//pattern-content-centered-50
+//pattern-content-centered-75

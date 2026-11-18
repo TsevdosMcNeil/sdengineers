@@ -1,0 +1,134 @@
+
+/*
+*  Slick Carousel
+*/
+
+.wp-block-cb-carousel {
+    .slick-list {
+        @extend .ratio;
+        @extend .ratio-16x9;
+
+        .wp-block-cover-image, 
+        .wp-block-cover {
+            min-height: 100%;
+            .wp-block-buttons {
+                min-height: 50%;
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                left: 0;
+                .wp-block-button {
+                    margin-top:auto;
+                    margin-bottom: 30px;
+                    .wp-block-button__link {
+                        @extend .body-font;
+                        line-height: 1.8;
+                        height: var(--cd-btn-large);
+                        font-weight: bold;
+                        @include media-breakpoint-down(lg) {
+                            font-size: 12.5px;
+                        }
+                        @include media-breakpoint-up(lg) {
+                            line-height: 2.1;
+                        }
+                    }
+                }
+            }
+            @include media-breakpoint-down(lg) {
+                .wp-block-cover__inner-container > h2 {
+                    position: absolute;
+                    top: 30px;
+                    left: 25px;
+                }
+            }
+        }
+    }
+    button.slick-arrow {
+        @extend .btn;
+        //@extend .btn-primary;
+        @include media-breakpoint-down(lg) {
+            width: var(--cd-btn-large);
+            height: var(--cd-btn-large);
+        }
+        
+        position: absolute;
+        z-index: 1;
+        &:before {
+            @include bg-arrow-fill('%23000'); 
+            background-color: $white;
+            opacity: 1;
+        }
+        &.slick-prev {
+            left: 40px;
+            &:before {
+                transform: rotate(-180deg);
+            }
+          }
+        &.slick-next {
+            right: 40px;
+        }
+    }
+}
+@each $color, $codecolor in $colors {
+    #page.#{$color} {
+        .wp-block-cb-carousel {    
+            .slick-list {
+                .wp-block-cover-image, 
+                .wp-block-cover {
+                    .wp-block-buttons {
+                        .wp-block-button {
+                            .wp-block-button__link {
+                                color: $codecolor;
+                                background-color: $white;
+                                &:hover {
+                                    color: $white;
+                                    background-color: $codecolor;
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+            button.slick-arrow:hover {  
+                &:before {
+                    @include bg-arrow-fill('%23FFF'); 
+                    background-color: $codecolor;
+                }
+            }
+        }
+    }
+}
+
+
+
+/*
+*  Bootstrap Carousel
+*/
+.bs-carousel {
+    &.carousel-control-prev,
+    &.carousel-control-next  {
+        @extend .btn;
+        width: var(--cd-btn-large);
+        height: var(--cd-btn-large);
+        top:auto;
+        position: fixed;
+        right: 75px;
+        z-index: 1;
+        opacity: 1;
+        &:before {
+            @include bg-arrow('%23000'); 
+            background-color: $white;
+            opacity: 1;
+        }
+    }
+    &.carousel-control-next  {
+        bottom:calc(var(--cd-maingutter-x) + 80px);
+    }
+    &.carousel-control-prev {
+        left:auto;
+        bottom: var(--cd-maingutter-x);
+        &:before {
+            transform: rotate(180deg);
+        }
+    }
+}

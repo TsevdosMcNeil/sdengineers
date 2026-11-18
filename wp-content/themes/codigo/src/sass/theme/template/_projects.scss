@@ -1,0 +1,414 @@
+:root {
+  --cdg-mg-top-1: 24%;
+  --cdg-mg-left-1: 16%;
+  --cdg-mg-tx-1: -8%;
+  --cdg-mg-ty-1: -3%;
+  --cdg-mg-top-2: 13%;
+  --cdg-mg-left-2: 9%;
+  --cdg-mg-tx-2: -3%;
+  --cdg-mg-ty-2: -4%;
+  --cdg-mg-top-3: 2%;
+  --cdg-mg-left-3: 4%;
+  --cdg-mg-tx-3: 2%;
+  --cdg-mg-ty-3: -4%;
+}
+
+.project {
+  &-features {
+    .project-feature {
+      strong {
+        color: $gray-400;
+        a {
+          color: $gray-400;
+        }
+      }
+    }
+  }
+
+  &-row {
+    & > .col {
+      .card-project {
+        transition: all 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        margin-bottom: 70px;
+        .card-header {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    & > .col {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+    & > .col {
+      figure.portrait {
+        display: none;
+      }
+    }
+    & > .col:nth-child(22n + 9),
+    & > .col:nth-child(22n + 14),
+    & > .col:nth-child(22n + 15),
+    & > .col:nth-child(22n + 21) {
+      figure.landscape {
+        display: none;
+      }
+      figure.portrait {
+        display: block;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      & > .col {
+        width: 25%;
+      }
+      & > .col:nth-child(22n + 7),
+      & > .col:nth-child(22n + 20) {
+        width: 50%;
+      }
+      & > .col:nth-child(22n),
+      & > .col:nth-child(22n + 8){
+        width: 75%;
+      }
+
+    }
+
+    &.loading {
+      & > .col {
+        @include _transition;
+        transform: scale3d(0.1, 0.1, 0.1) !important;
+        opacity: 0 !important;
+      }
+    }
+    &.loaded {
+      & > .col {
+        @include _transition;
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+      }
+    }
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+#projectFilters {
+  h6 {
+    @extend .mobileOverlinedTitle;
+    @include media-breakpoint-down(lg) {
+      margin-top: 5px;
+      font-size: 35px;
+    }
+  }
+  .accordion-body {
+    a {
+      color: $gray-400;
+    }
+  }
+}
+#appDisplay {
+  button.grid {
+    @include media-breakpoint-down(lg) {
+      display: none; //Temoporary
+    }
+  }
+}
+
+.project-row#indexList {
+  margin-right: calc(var(--bs-gutter-x) * -2);
+  margin-left: calc(var(--bs-gutter-x) * -2);
+  table.table {
+    thead {
+      th {
+        &:last-of-type {
+          text-align: right;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td:last-of-type {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+body.single-project {
+  figure.wp-block-image {
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+/* === Mosaic grid container === */
+.wp-block-query.project-mosaic {
+  .wp-block-post-template {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    & > li.wp-block-post {
+      position: relative;
+      overflow: visible; /* the media box will clip */
+      border-radius: 0;
+      cursor: pointer;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 3/2;
+
+      /* ===== MEDIA BOX (enforces landscape ratio) ===== */
+      .wp-block-post-featured-image {
+        position: relative;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* clips zoom + overlay */
+        background: #222; /* fallback behind image */
+
+        /* dark overlay layer (only over the image box) */
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0);
+          transition: background 0.3s ease;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        /*  Make the image link cover the whole tile */
+        a {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          display: block;
+        }
+
+        img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transform: scale(1);
+          transition: transform 0.5s ease;
+        }
+
+        video {
+          transform: scale(1);
+          transition: transform 0.5s ease;
+        }
+        iframe {
+          transform: scale(1) translate(-50%,-50%);
+          transition: transform 0.5s ease;
+        }
+        
+      }
+
+      /* If there is NO featured image block rendered, keep a landscape box anyway */
+      &:not(.has-post-thumbnail) {
+        background: #222;
+        overflow: hidden;
+      }
+
+      /* ===== CENTERED OVERLAY CONTENT (relative to the LI, same height as figure) ===== */
+      > .wp-block-group {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .wp-block-group__inner-container {
+          width: 80%;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 18px;
+
+          text-align: center;
+        }
+      }
+      /* Let clicks pass through overlay to the link underneath */
+      .wp-block-post-title,
+      .wp-block-post-title * {
+        pointer-events: none;
+      }
+      .wp-block-buttons,
+      .wp-block-button__link {
+        pointer-events: none;
+      }
+
+      .wp-block-post-title {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+
+        color: #fff;
+        line-height: 1.2;
+
+        opacity: 0;
+        transform: translateY(-8px);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+          white-space: normal;
+        }
+      }
+
+      .wp-block-buttons,
+      .wp-block-read-more {
+        position: static;
+        display: inline-block;
+
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.3s ease 0.05s,
+          transform 0.3s ease 0.05s;
+
+        background: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        padding: 12px 28px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        border-radius: 40px;
+
+        white-space: nowrap;
+        max-width: 100%;
+        pointer-events: auto;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+        }
+      }
+
+      /* ===== HOVER EFFECT ===== */
+      &:hover {
+        .wp-block-post-featured-image img,
+        .wp-block-post-featured-image video {
+          transform: scale(1.08);
+        }
+        .wp-block-post-featured-image iframe {
+          transform: scale(1.08) translate(-50%,-50%);
+        }
+
+        .wp-block-post-featured-image::after {
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        .wp-block-post-title,
+        .wp-block-buttons,
+        .wp-block-read-more {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    & > li.wp-block-post {
+      figure.portrait {
+        display: none;
+      }
+    }
+    //even columns
+    & > li.wp-block-post:nth-child(odd) {
+      grid-column: 1 / span 6;
+    }
+    & > li.wp-block-post:nth-child(even) {
+      grid-column: 7 / span 6;
+    }
+    //third element, span two rows
+    & > li.wp-block-post:nth-child(3) {
+      aspect-ratio: 2/3;
+      figure.landscape {
+        display: none;
+      }
+      figure.portrait {
+        display: block;
+      }
+    }
+    /* Your custom placement (first 5 items) 
+    & > li.wp-block-post:nth-child(1) {
+      grid-column: 1 / span 7;
+    }
+    & > li.wp-block-post:nth-child(2) {
+      grid-column: 8 / span 5;
+    }
+    & > li.wp-block-post:nth-child(3) {
+      grid-column: 4 / span 9;
+    }
+    & > li.wp-block-post:nth-child(4) {
+      grid-column: 1 / span 5;
+      aspect-ratio: 2/3;
+    }
+    & > li.wp-block-post:nth-child(5) {
+      grid-column: 6 / span 7;
+    }
+    */
+  }
+}
+
+/* =========================
+  MOBILE: single column
+  ========================= */
+@include media-breakpoint-down(md) {
+  .wp-block-query.project-mosaic {
+    .wp-block-post-template {
+      grid-template-columns: 1fr;
+      grid-template-areas: none;
+    }
+
+    .wp-block-post-template > li.wp-block-post {
+      grid-column: auto !important;
+      width: 100%;
+    }
+
+    /* Make overlay always visible on mobile */
+    .wp-block-post-template > li.wp-block-post {
+      .wp-block-post-featured-image::after {
+        background: rgba(0, 0, 0, 0.5); /* permanent overlay */
+      }
+      
+      > .wp-block-group {
+        .wp-block-group__inner-container {
+          width: 90%;
+        }
+      }
+
+      .wp-block-post-title,
+      .wp-block-buttons,
+      .wp-block-read-more {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}

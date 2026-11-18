@@ -1,0 +1,145 @@
+/* 
+ * This file is a copy of the custom CSS code saved in the Cookie Banner Plugin
+ *
+ * Plugin: Complianz | GDPR/CCPA Cookie Consent
+ * @url: https://en-gb.wordpress.org/plugins/complianz-gdpr/
+ * @see wp-admin/admin.php?page=cmplz-cookiebanner&id=1#custom_css
+ */
+
+/* Container */
+.cmplz-cookiebanner{
+    margin:0;
+    width: 100%;
+    grid-gap: 5px;
+}
+@media screen and (min-width: 1024px) {
+    .cmplz-cookiebanner {
+        grid-template-columns: 1fr 300px 250px;
+        grid-gap: 0;
+    }
+}
+
+/* Logo */
+.cmplz-cookiebanner .cmplz-logo{}
+/* Title */
+.cmplz-cookiebanner .cmplz-title{}
+/* Close icon */
+.cmplz-cookiebanner .cmplz-close{}
+
+/* Body */
+@media screen and (min-width: 1024px) {
+    .cmplz-cookiebanner .cmplz-body {
+        grid-column: span 3;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .cmplz-cookiebanner .cmplz-body {
+        grid-column: span 2;
+        grid-column-start: 1;
+    }
+}
+
+/* Message */
+.cmplz-cookiebanner .cmplz-message{
+    margin-right:20px;
+}
+
+@media screen and (min-width: 1921px) {
+    .cmplz-cookiebanner .cmplz-message{
+         max-width: 65%;
+    }
+}
+
+
+ /* All buttons */
+ @media screen and (min-width: 1024px) {
+    .cmplz-cookiebanner .cmplz-buttons {
+        grid-column-start: 2 span;
+        grid-row-start: 5;
+    }
+    .cmplz-cookiebanner .cmplz-buttons .cmplz-btn {
+        width:auto !important;
+        min-width: 10px !important;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .cmplz-cookiebanner .cmplz-buttons {
+        grid-column-start: 2;
+        grid-row-start: 3;
+    }
+}
+
+/* Accept button */
+.cmplz-btn .cmplz-accept{} 
+ /* Deny button */
+.cmplz-btn .cmplz-deny{}
+ /* Save preferences button */
+.cmplz-btn .cmplz-deny{}
+ /* View preferences button */
+.cmplz-btn .cmplz-deny{}
+
+ /* Document hyperlinks */
+.cmplz-cookiebanner .cmplz-links .cmplz-link {
+    height: 45px;
+    padding: 10px;
+    margin: initial;
+    width: 100%;
+    white-space: nowrap;
+    border-radius: var(--cmplz_button_border_radius);
+    cursor: pointer;
+    font-size: var(--cmplz_button_font_size);
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 20px;
+    text-align: center;
+    flex: initial;
+    background-color: var(--cmplz_button_settings_background_color);
+    border: 1px solid var(--cmplz_button_settings_border_color);
+    color: var(--cmplz_button_settings_text_color);
+}
+
+@media screen and (min-width: 992px) {
+    .cmplz-cookiebanner .cmplz-links {
+        gap: 10px;
+        margin: 0;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .cmplz-cookiebanner .cmplz-links.cmplz-documents {
+        grid-column-start: 3;
+        grid-row-start: 5;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .cmplz-cookiebanner .cmplz-links.cmplz-documents {
+        grid-column-start: 3;
+        grid-row-start: 3;
+    }
+}
+
+ /* Categories */
+.cmplz-cookiebanner .cmplz-category{}
+.cmplz-cookiebanner .cmplz-category-title{} 
+
+/* Manage consent tab */
+#cmplz-manage-consent .cmplz-manage-consent{
+    display:none;
+} 
+
+/* Soft cookie wall */
+.cmplz-soft-cookiewall{}
+
+/* Placeholder button - Per category */
+.cmplz-blocked-content-container .cmplz-blocked-content-notice{}
+
+/* Placeholder button & message - Per service */
+.cmplz-blocked-content-container .cmplz-blocked-content-notice,
+.cmplz-blocked-content-notice{}
+button.cmplz-accept-service{}
+
+/* Styles for the AMP notice */
+#cmplz-consent-ui, #cmplz-post-consent-ui {}
+/* Message */
+#cmplz-consent-ui .cmplz-consent-message {}
+/* Buttons */
+#cmplz-consent-ui button, #cmplz-post-consent-ui button {}

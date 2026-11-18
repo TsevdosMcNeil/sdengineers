@@ -1,0 +1,12 @@
+//404
+body.error404 {
+    .entry-header {
+        position: relative;
+        z-index: 2;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 120px;
+        } 
+    }
+
+    
+}

@@ -1,0 +1,25 @@
+.hubpdf-wrapper {
+  cursor: pointer;
+}
+
+.hubpdf-wrapper  .hubpdf-inner-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.hubpdf-wrapper.is-open {
+  cursor: default;
+}
+
+.hubpdf-wrapper.is-open .hubpdf-inner-wrapper {
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+}
+
