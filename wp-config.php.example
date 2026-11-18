@@ -1,0 +1,54 @@
+<?php
+// === Load DB creds from env (set in docker-compose) ===
+define('DB_NAME',     getenv('WORDPRESS_DB_NAME')     ?: getenv('MYSQL_DATABASE') ?: 'wordpress');
+define('DB_USER',     getenv('WORDPRESS_DB_USER')     ?: getenv('MYSQL_USER')     ?: 'wordpress');
+define('DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') ?: getenv('MYSQL_PASSWORD') ?: 'wordpress');
+define('DB_HOST',     getenv('WORDPRESS_DB_HOST')     ?: 'db:3306');
+
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
+
+// Table prefix
+$table_prefix = getenv('WORDPRESS_TABLE_PREFIX') ?: 'wp_';
+
+// Reverse proxy / Caddy HTTPS detection
+if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+  $_SERVER['HTTPS'] = 'on';
+}
+
+// Site URLs (override via env if you want)
+$port = getenv('WORDPRESS_SSL_PORT') ?: '443';
+define('WP_HOME',    getenv('WP_HOME')    ?: "https://default:$port");
+define('WP_SITEURL', getenv('WP_SITEURL') ?: "https://default:$port");
+define('FORCE_SSL_ADMIN', true);
+
+// Logging (your compose maps ./logs -> /var/www/html/logs)
+ini_set('log_errors', true);
+ini_set('error_reporting', E_ALL);
+ini_set('error_log', __DIR__ . '/logs/error.log');
+
+// Salts — copy the ones from your current file, or generate new and paste here:
+define( 'AUTH_KEY',         getenv('WORDPRESS_AUTH_KEY',         '') );
+define( 'SECURE_AUTH_KEY',  getenv('WORDPRESS_SECURE_AUTH_KEY',  '') );
+define( 'LOGGED_IN_KEY',    getenv('WORDPRESS_LOGGED_IN_KEY',    '') );
+define( 'NONCE_KEY',        getenv('WORDPRESS_NONCE_KEY',        '') );
+define( 'AUTH_SALT',        getenv('WORDPRESS_AUTH_SALT',        '') );
+define( 'SECURE_AUTH_SALT', getenv('WORDPRESS_SECURE_AUTH_SALT', '') );
+define( 'LOGGED_IN_SALT',   getenv('WORDPRESS_LOGGED_IN_SALT',   '') );
+define( 'NONCE_SALT',       getenv('WORDPRESS_NONCE_SALT',       '') );
+
+
+// Debug flags (tweak as you like)
+if (!defined('WP_DEBUG')) define('WP_DEBUG', false);
+if (!defined('WP_DEBUG_LOG')) define('WP_DEBUG_LOG', true);
+if (!defined('WP_DEBUG_DISPLAY')) define('WP_DEBUG_DISPLAY', false);
+
+
+ini_set('log_errors',TRUE);
+ini_set('error_reporting', E_ALL);
+ini_set('error_log', dirname(__FILE__) . '/logs/error.log');
+   
+
+// ABSPATH and bootstrap
+if (!defined('ABSPATH')) define('ABSPATH', __DIR__ . '/');
+require_once ABSPATH . 'wp-settings.php';

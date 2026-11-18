@@ -94,6 +94,9 @@ package-lock.json
 # Migration file
 !*.sql.gz
 
+# track docs
+!docs/
+
 # track favicon files, if they exist
 !android-chrome-*.png
 !apple-touch-icon*.png
@@ -105,8 +108,14 @@ package-lock.json
 !safari-pinned-tab.svg
 !site.webmanifest
 
+# Docker
+!Caddyfile
+!docker-compose.yml
+!uploads.ini
 
-# track these mu-plugins, plugins, and themes
+
+# Wordpress
+!wp-config.php.example
 #!wp-content/mu-plugins/wp-migrate-db-pro-compatibility.php
 !wp-content/mu-plugins/force-core-block-css.php
 
@@ -121,7 +130,6 @@ wp-content/plugins/sd-hubspot/dist
 wp-content/plugins/sd-hubspot/dist-product
 wp-content/plugins/sd-hubspot/npm-debug.log
 wp-content/plugins/sd-hubspot/vendor/
-
 
 
 

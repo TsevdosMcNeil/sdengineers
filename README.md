@@ -3,7 +3,7 @@ A clean slate Wordpress theme template with Bootstrap(5), Sass, and a Webpack co
 Based in [understrap.com](https://understrap.com) and in [Codigo Theme](https://github.com/pablorica/wordpress_codigo_theme)
 
 
-[![version](https://img.shields.io/badge/version-1.2.0-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-1.3.0-green.svg)](https://semver.org)
 
 
 
